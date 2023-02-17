@@ -28,6 +28,7 @@
   * [Programming the BIOS](#programming-the-bios)
   * [Installing DOS](#installing-dos)
   * [Programming the CS4237B Firmware](#programming-the-cs4237b-firmware)
+- [MT-32 / General MIDI](#mt-32--general-midi)
 - [WiFi Connectivity](#wifi-connectivity)
 - [Wiki](#wiki)
 - [Help](#help)
@@ -145,7 +146,7 @@ Take a look at the [wiki][wiki-assembly] for more in-depth assembly instructions
 12. Connect a keyboard to one of the HID USB ports. You should be good to go!
 
 ### Programming the BIOS
-When purchasing the SOM-128-EX module from DMP, its ROM chip comes preinstalled with an Arduino-like bootloader which is useless to us. Also, the  "crossbar" is configured for using the module with the 86Duino Zero/One boards - meaning its default pin layout is completely different from what we need for the TinyLlama.
+When purchasing the SOM-128-EX module from DMP, its ROM chip comes preinstalled with an Arduino-like bootloader which isn't what we want. Also, the  "crossbar" is configured for using the module with the 86Duino Zero/One boards - meaning its default pin layout is completely different from what we need for the TinyLlama.
 
 Follow these steps to flash the ROM with the TinyLlama BIOS for the first time:
 1. Find a USB flash drive, must be minimum 32 MB in size (shouldn't be a problem these days). Note that not all USB drives are bootable. Use a well-known bootable drive. _NB: You have to use a USB stick for this, an SD card won't work since the crossbar is configured to use different pins on the SOM for SD traffic._
@@ -211,6 +212,13 @@ C:\UNISOUND\UNISOUND.EXE /V60 /VW60 /VF60 /VL60 /VP60 /VC0 /VM0
 5. Feel free to experiment with the different volume levels, look at the `C:\UNISOUND\UNISOUND.TXT` file for further guidance.
 6. Fire up a few games to test that Adlib, SoundBlaster FM and digital sound effects are working properly.
 
+## MT-32 / General MIDI
+If you've installed [mt32-pi][mt32-pi] on a Raspberry Pi Zero 2 and connected it to the TinyLlama, it should be ready to go using IO port 330. Use the third button from the left (labeled "SYNTH_SW" on the PCB) to switch between MT-32 and General MIDI mode.  
+If you want to play old games that require "MPU-401 Intelligent Mode" (Sierra games, Monkey Island 1, etc), try running [SoftMPU][softmpu]:
+```
+C:\SOFTMPU\>softmpu /mpu:330 /sb:220 /irq:7
+```
+
 ## WiFi Connectivity
 There's a [section][wiki-wifi] in the wiki dedicated to this, take a look.
 
@@ -269,3 +277,4 @@ Many thanks to
 [vogons]: https://www.vogons.org
 [86duino]: https://www.86duino.com
 [mt32-pi]: https://github.com/dwhinham/mt32-pi
+[softmpu]: http://bjt42.github.io/softmpu
