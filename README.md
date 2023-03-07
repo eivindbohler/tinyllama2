@@ -191,11 +191,13 @@ Length = 292    Programming EEPROM Block: 1 2    EEPROM programmed
 Verifying EEPROM:
 Verifying CS4237B.ASM against EEPROM . . .      Verified OKAY
 ```
-3. Reboot the system, set the correct `BLASTER` environment variable and run `UNISOUND.EXE`; you should get the following output:
+3. Make sure the correct `BLASTER` environment variable is set and `UNISOUND.COM` command is called from `AUTOEXEC.BAT`. Note that the 8-bit DMA channel is **1** and the IRQ is **7**:
 ```
-C:\>set BLASTER=A220 I7 D1 P330 T4
-C:\>cd unisound
-C:\UNISOUND>unisound
+SET BLASTER=A220 I7 D1 P330 T4
+C:\UNISOUND\UNISOUND.EXE /V60 /VW60 /VF60 /VL60 /VP60 /VC0 /VM0
+```
+4. Reboot the system, and you should get the following output:
+```
 Universal ISA PnP Sound Card Driver for DOS v0.76f. (c) JazeFox 2019-21
 -----------------------------------------------------------------------
 PnP card found: [CSC7537] CS4237B
@@ -203,11 +205,6 @@ BLASTER environment var found! Loading settings...
 ADD:220 WSS:534 OPL:388 IRQ:7 DMA:1/1 MPU:330/I9 CTR:120 JOY:200
 Initialization done.
 Crystal Mixer [VOL:85 WAV:80 FM:80 LIN:0 CD:0 MIC:0]
-```
-4. If everything went ok, add the `BLASTER` variable and `UNISOUND` command to your `AUTOEXEC.BAT` file:
-```
-SET BLASTER=A220 I7 D1 P330 T4
-C:\UNISOUND\UNISOUND.EXE /V60 /VW60 /VF60 /VL60 /VP60 /VC0 /VM0
 ```
 5. Feel free to experiment with the different volume levels, look at the `C:\UNISOUND\UNISOUND.TXT` file for further guidance.
 6. Fire up a few games to test that Adlib, SoundBlaster FM and digital sound effects are working properly.
