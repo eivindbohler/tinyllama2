@@ -150,7 +150,7 @@ When purchasing the SOM-128-EX module from DMP, its ROM chip comes preinstalled 
 
 Follow these steps to flash the ROM with the TinyLlama BIOS for the first time:
 1. Find a USB flash drive, must be minimum 32 MB in size (shouldn't be a problem these days). Note that not all USB drives are bootable. Use a well-known bootable drive. _NB: You have to use a USB stick for this, an SD card won't work since the crossbar is configured to use different pins on the SOM for SD traffic._
-2. Unzip the `INITBIOS.ZIP` file from this GitHub repo and do a block-level transfer of the `INITBIOS.IMG` to the USB drive. Use [Balena Etcher][balena-etcher], or the command line if you know what you're doing (macOS example):
+2. Do a block-level transfer of the `INITBIOS.IMG` from this repo to the USB drive. Use [Balena Etcher][balena-etcher], or the command line if you know what you're doing (macOS example):
 ```
 $ diskutil list
 (Find your USB drive, eg. /dev/disk2)
